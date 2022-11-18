@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-sm-6 col-md-8 col-lg-10">
+        <h1 id="aboutTitle">Over deze applicatie</h1>
+        <p>
+            Deze applicatie is gemaakt in het kader van het vak 'Clientside web
+            frameworks' van Avans Hogeschool
+            Breda. Github: <a
+                href="https://github.com/TimdeLaater/MusicReviews/tree/main/apps/music-reviews">https://github.com/TimdeLaater/MusicReviews/tree/main/apps/music-reviews</a>
+        </p>
+        <h3>Naam van jouw project</h3>
+        <p>
+            Mijn applicatie gaat als volgt werken: Een user kan een account
+            aanmaken en hier zijn/haar favorite albums opzoeken. Ook kunnen ze
+            hun favorite artiesten opzoeken en de albums reviewen.
+        </p>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card">
+            <div class="d-flex justify-content-center align-items-center">
+                <img
+                    src="assets/images/person.png"
+                    class="card-img-top rounded-circle border profile-pic"
+                    alt="..."
+                    />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Tim de Laater</h5>
+                <p class="card-text">Studentnummer: 2171083</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Entiteiten</h3>
+<p>
+    De 3 entiteiten van mijn project zijn:
+    -Artist,
+    -Album,
+    -Review.
+</p>
+<div class="row">
+    <div class="col-sm-12 col-md-4">
+        <p>User</p>
+        <ul>
+            <li>naam: string</li>
+            <li>id: Number</li>
+            <li>email: string</li>
+            <li>birthdate: date</li>
+            <li>password: string</li>
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>TrainingSchedule</p>
+        <ul>
+            <li>naam: string</li>
+            <li>id: number</li>
+            <li>start date: date</li>
+            <li>amountOfDays: Number</li>
+            <li>active: boolean</li>
+            <li>training sesions: Training[]</li>
+            <li>total calories: Number</li>
+            <li>userId: number</li>
+
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>Training</p>
+        <ul>
+            <li>naam: string</li>
+            <li>id: number</li>
+            <li>length: number</li>
+            <li>total calories: Number</li>
+            <li>exercises: Exercises[]</li>
+            <li>finished: boolean</li>
+            <li>userId: number</li>
+
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>Exercises</p>
+        <ul>
+            <li>naam: string</li>
+            <li>id: Number</li>
+            <li>reps: Number</li>
+            <li>sets: Number</li>
+            <li>calories: Number</li>
+            <li>targeted muscles: string</li>
+            <li>equipmentNeeded: boolean</li>
+            <li>userId: number</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <img src="assets/images/voorbeeld-datamodel.png" alt="..." />
+    </div>
+</div>

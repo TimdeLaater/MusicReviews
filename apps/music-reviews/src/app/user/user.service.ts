@@ -36,15 +36,15 @@ export class UserService {
   public get(): User[] {
     return this.users;
   }
-  public getByid(id: number): User {
+  public getByid(id: any): User {
     return this.users.filter((user) => user.id == id)[0]
   }
-  public delete(id: number): void {
+  public delete(id: any): void {
     console.log(id)
     console.log('we zijn wel hier')
     this.users.splice(id - 1);
   }
-  public edit(id: number, user: User): void {
+  public edit(id: any, user: User): void {
     user.id = id
     this.users[id - 1] = user;
   }

@@ -1,0 +1,33 @@
+
+<div class="row">
+    <div style="float: left; margin-right: 30px;">
+        <h1>Naam: {{user.name}}</h1>
+        <br>
+        <h1>Email: {{user.email}}</h1>
+        <br>
+        <h1>Birthday: {{user.birthday}}</h1>
+        <br>
+        <h1>Id: {{user.id}}</h1>
+    </div>
+    <div style="float: right;">
+        <form [formGroup]="userform" (ngSubmit)="onEdit()">
+            <input type="text" class="fortextbox" name="Name" placeholder="name"
+                formControlName="name">
+            <br/> <input type="text" class="fortextbox" name="Email"
+                    placeholder="Email"
+                    formControlName="email">
+                <br/>
+                    <input type="text" class="fortextbox" name="Password"
+                        placeholder="Password"
+                        formControlName="password">
+                    <br/>
+                        <input type="date" class="fortextbox" name="BirthDay"
+                            placeholder="BirthDay"
+                            formControlName="birthday">
+                        <br/>
+
+                            <!-- <input type="submit" class="forsubmit" value="Add"> -->
+                            <button type="submit" class="btn-success">Edit</button>
+                        </form>
+                    </div>
+                </div>

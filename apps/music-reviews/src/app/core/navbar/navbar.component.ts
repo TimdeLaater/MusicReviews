@@ -10,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
         routerLink="/"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
-        >{{ title }}</a
+        >MusicReview</a
       >
       <button
         class="navbar-toggler hidden-sm-up"
@@ -28,26 +28,8 @@ import { Component, Input, OnInit } from '@angular/core';
           <li class="nav-item">
             <a class="nav-link" routerLink="/" [routerLinkActive]="['active']">Home</a>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              routerLink="/"
-              [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-              tabindex="-1"
-              aria-disabled="true"
-              >Training</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="exercises"
-              [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Exercises</a
-            >
-          </li>
+         
+          
           <li class="nav-item">
             <a
               class="nav-link"

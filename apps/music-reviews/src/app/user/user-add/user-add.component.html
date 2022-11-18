@@ -1,0 +1,21 @@
+<div>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit()">
+        <input type="text" class="fortextbox" name="Name" placeholder="name"
+            formControlName="name">
+        <br/> <input type="text" class="fortextbox" name="Email"
+                placeholder="Email"
+                formControlName="email">
+            <br/>
+                <input type="text" class="fortextbox" name="Password"
+                    placeholder="Password"
+                    formControlName="password">
+                <br/>
+                <input type="date" class="fortextbox" name="BirthDay"
+                    placeholder="BirthDay"
+                    formControlName="birthday">
+                <br/>
+
+                    <!-- <input type="submit" class="forsubmit" value="Add"> -->
+                    <button type="submit" class="btn-success">Add</button>
+                </form>
+            </div>
