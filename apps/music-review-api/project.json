@@ -1,46 +1,50 @@
 {
   "name": "music-review-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/music-review-api",
+  "sourceRoot": "apps/music-review-api/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/next:build",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "root": "apps/music-review-api",
-        "outputPath": "dist/apps/music-review-api"
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/music-review-api",
+        "main": "apps/music-review-api/src/main.ts",
+        "tsConfig": "apps/music-review-api/tsconfig.app.json",
+        "assets": ["apps/music-review-api/src/assets"]
       },
       "configurations": {
-        "development": {
-          "outputPath": "apps/music-review-api"
-        },
-        "production": {}
-      }
-    },
-    "serve": {
-      "executor": "@nrwl/next:server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "music-review-api:build",
-        "dev": true
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "music-review-api:build:development",
-          "dev": true
-        },
         "production": {
-          "buildTarget": "music-review-api:build:production",
-          "dev": false
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/music-review-api/src/environments/environment.ts",
+              "with": "apps/music-review-api/src/environments/environment.prod.ts"
+            }
+          ]
         }
       }
     },
-    "export": {
-      "executor": "@nrwl/next:export",
+    "serve": {
+      "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "music-review-api:build:production"
+        "buildTarget": "music-review-api:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "music-review-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/music-review-api/**/*.ts"]
       }
     },
     "test": {
@@ -49,13 +53,6 @@
       "options": {
         "jestConfig": "apps/music-review-api/jest.config.ts",
         "passWithNoTests": true
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/music-review-api/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
