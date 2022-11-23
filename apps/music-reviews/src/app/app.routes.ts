@@ -1,3 +1,4 @@
+import { AlbumComponent } from './album/album.component';
 import { Route } from '@angular/router';
 import { LayoutComponent } from './core/layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,6 +21,8 @@ export const appRoutes: Route[] = [
             { path: 'user/add', component: UserAddComponent },
             { path: 'user/detail/:id', component: UserDetailComponent },
             { path: 'user/detail/:id/edit', component: UserEditComponent },
+            {path: 'album', component: AlbumComponent},
+            { path: 'album/detail/:id', component: AlbumComponent },
 
 
 

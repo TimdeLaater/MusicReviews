@@ -1,21 +1,30 @@
 <div>
     <form [formGroup]="userform" (ngSubmit)="onSubmit()">
-        <input type="text" class="fortextbox" name="Name" placeholder="name"
-            formControlName="name">
-        <br/> <input type="text" class="fortextbox" name="Email"
-                placeholder="Email"
-                formControlName="email">
+        <div class="form-group">
+            <input id="name" type="text" class="form-control" name="Name"
+                placeholder="name"
+                formControlName="name" required>
             <br/>
-                <input type="text" class="fortextbox" name="Password"
-                    placeholder="Password"
-                    formControlName="password">
+                <input id="email" type="text" class="form-control"
+                    name="Email"
+                    placeholder="Email"
+                    formControlName="email">
                 <br/>
-                <input type="date" class="fortextbox" name="BirthDay"
-                    placeholder="BirthDay"
-                    formControlName="birthday">
-                <br/>
+                    <input id="password" [type]="true ? 'password' : 'text'"
+                        class="form-control"
+                        name="Password"
+                        placeholder="Password"
+                        formControlName="password">
+                    <br/>
+                        <input id="birthday" type="date" class="form-control"
+                            name="BirthDay"
+                            placeholder="BirthDay"
+                            formControlName="birthday">
+                        <br/>
+                        </div>
+                        <!-- <input type="submit" class="forsubmit" value="Add"> -->
+                        <button type="submit" value="add" class="forsubmit">Maak
+                            aan</button>
+                    </form>
 
-                    <!-- <input type="submit" class="forsubmit" value="Add"> -->
-                    <button type="submit" class="btn-success">Add</button>
-                </form>
-            </div>
+                </div>

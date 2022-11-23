@@ -16,6 +16,7 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { AlbumDetailComponent } from './album-detail/album-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AboutComponent } from './about/about.component';
     UserDetailComponent,
     UserEditComponent,
     AboutComponent,
+    AlbumDetailComponent,
   ],
   imports: [
     BrowserModule,
