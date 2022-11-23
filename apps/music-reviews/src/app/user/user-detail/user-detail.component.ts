@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user.model';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'music-review-app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css'],
+    selector: 'music-review-app-user-detail',
+    templateUrl: './user-detail.component.html',
+    styleUrls: ['./user-detail.component.css'],
 })
 export class UserDetailComponent {
 
@@ -25,7 +25,7 @@ export class UserDetailComponent {
     public delete() {
         console.log('we zijn hier')
         this.userService.delete(this.id)
-        
+
         this.router.navigate(['/user']);
     }
 }

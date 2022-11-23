@@ -6,7 +6,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { ArtistComponent } from './artist/artist.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
@@ -38,8 +38,9 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     NgbModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
