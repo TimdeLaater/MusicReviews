@@ -1,3 +1,4 @@
+import { AlbumService } from './../../../music-reviews/src/app/services/album.service';
 import { Album, AlbumSchema } from './album/album.schema';
 import { Artist, ArtistSchema } from './artist/artist.schema';
 import { AlbumController } from './album/album.controller';
@@ -18,17 +19,18 @@ import { UserController } from './user/user.controller';
     imports: [
         MongooseModule.forFeature([
             { name: User.name, schema: UserSchema },
-            {name: Artist.name, schema: ArtistSchema},
-            {name: Album.name, schema: AlbumSchema}
+            { name: Artist.name, schema: ArtistSchema },
+            { name: Album.name, schema: AlbumSchema }
         ]),
     ],
     controllers: [
         UserController,
         AlbumController,
-        
+
     ],
     providers: [
-        UserService
+        UserService,
+        AlbumService,
     ],
 })
 export class DataModule { }
