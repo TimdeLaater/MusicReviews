@@ -10,8 +10,8 @@ import { DataModule } from './data.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      `mongodb+srv://TimDl:NWNZrSwUEhnQCj3@music-review.kxfffto.mongodb.net/?retryWrites=true&w=majority`
-      // `mongodb+srv://${process.env.MONGO_USR}:${process.env.MONGO_PWD}@${process.env.MONGO_HOST}/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`
+      // `mongodb+srv://TimDl:NWNZrSwUEhnQCj3@music-review.kxfffto.mongodb.net/?retryWrites=true&w=majority`
+      `mongodb+srv://${process.env.MONGO_USR}:${process.env.MONGO_PWD}@${process.env.MONGO_HOST}/?retryWrites=true&w=majority`
     ),
     AuthModule,
     DataModule,

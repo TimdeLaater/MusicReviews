@@ -1,3 +1,4 @@
+import { AlbumComponent } from './album/album.component';
 import { ReviewComponent } from './review/review.component';
 import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
@@ -16,7 +17,7 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
-import { AlbumDetailComponent } from './album-detail/album-detail.component';
+import { AlbumDetailComponent } from './album/album-detail/album-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,11 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
     UserEditComponent,
     AboutComponent,
     AlbumDetailComponent,
+    AlbumComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     NgbModule,
     ReactiveFormsModule,

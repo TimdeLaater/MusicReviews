@@ -1,11 +1,10 @@
-export class User {
+export interface User {
   // Optioneel description attribuut
 
-  constructor(
-    public id: number,
-    public name: string,
-    public email: string,
-    public password: string,
-    public birthday: string,
-  ) { }
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  birthday: string,
+
 }

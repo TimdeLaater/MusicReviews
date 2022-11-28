@@ -1,4 +1,6 @@
+import { AlbumService } from './../services/album.service';
 import { Component, OnInit } from '@angular/core';
+import { Album } from '../models/album.model';
 
 @Component({
   selector: 'music-review-album',
@@ -6,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./album.component.css'],
 })
 export class AlbumComponent implements OnInit {
-  constructor() {}
+  albums: Album[] = []
+  constructor(private albumservice: AlbumService) { }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+
+    // this.albumservice.getAll().subscribe((albumList) => {
+    //   this.albums = albumList
+    // })
+    this.albums = this.albumservice.getTestList();
+  }
 }

@@ -29,7 +29,15 @@ import { Component, Input, OnInit } from '@angular/core';
             <a class="nav-link" routerLink="/" [routerLinkActive]="['active']">Home</a>
           </li>
          
-          
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="album"
+              [routerLinkActive]="['active']"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Albums</a
+            >
+          </li>
           <li class="nav-item">
             <a
               class="nav-link"
