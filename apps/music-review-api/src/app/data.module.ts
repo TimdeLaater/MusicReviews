@@ -1,4 +1,4 @@
-import { AlbumService } from './../../../music-reviews/src/app/services/album.service';
+
 import { Album, AlbumSchema } from './album/album.schema';
 import { Artist, ArtistSchema } from './artist/artist.schema';
 import { AlbumController } from './album/album.controller';
@@ -13,6 +13,7 @@ import { User, UserSchema } from './user/user.schema';
 
 
 import { UserController } from './user/user.controller';
+import { AlbumService } from './album/album.service';
 
 
 @Module({
