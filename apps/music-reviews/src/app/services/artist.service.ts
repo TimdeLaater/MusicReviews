@@ -2,6 +2,7 @@ import { Artist } from './../models/artist.model';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -14,26 +15,26 @@ export class ArtistService {
     }
 
     getAll(): Observable<Artist[]> {
-        return this.http.get<Artist[]>(`${this.baseUrl}/artist/`)
+        return this.http.get<Artist[]>(`${environment.SERVER_API_URL}/artist/`)
 
     }
     postItem(item: Artist): Observable<Artist> {
         console.log(item, "TestAPICALL");
-        return this.http.post<any>(`${this.baseUrl}/Artist/add`, item,)
+        return this.http.post<any>(`${environment.SERVER_API_URL}/Artist/add`, item,)
 
     }
 
     putItem(item: Artist, id: any): Observable<Artist> {
         console.log(item, id, "TestAPICALL");
-        return this.http.put<Artist>(`${this.baseUrl}/Artist/${id}`, item)
+        return this.http.put<Artist>(`${environment.SERVER_API_URL}/Artist/${id}`, item)
     }
 
     getById(id: any): Observable<Artist> {
-        return this.http.get<Artist>(`${this.baseUrl}/Artist/${id}`)
+        return this.http.get<Artist>(`${environment.SERVER_API_URL}/Artist/${id}`)
     }
 
     delete(id: any): Observable<Artist> {
-        return this.http.delete<Artist>(`${this.baseUrl}/Artist/${id}`)
+        return this.http.delete<Artist>(`${environment.SERVER_API_URL}/Artist/${id}`)
     }
 
 

@@ -7,6 +7,10 @@
             <a *ngIf="authService.userMayEdit(artist.userId) | async"
                 routerLink="edit" class="btn
                 btn-warning">Pas aan</a>
+            <button *ngIf="authService.userMayEdit(artist.userId) | async"
+                class="btn
+                btn-danger"
+                (click)="delete()">Delete</button>
         </div>
         <div class="col-sm">
             <h1>{{artist.name}}</h1>

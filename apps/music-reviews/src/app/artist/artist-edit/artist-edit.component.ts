@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { ArtistService } from '../../services/artist.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'music-review-app-artist-edit',
@@ -17,17 +18,23 @@ import { AuthService } from '../../services/auth.service';
 export class ArtistEditComponent implements OnInit {
   artistId: string | null = null;
   artist!: Artist;
+  modalReference: any;
   keys = Object.values;
   artistForm!: FormGroup
   genres = Genre;
   subs: Subscription = new Subscription();
   constructor(
+
     private route: ActivatedRoute,
     private router: Router,
     private artistService: ArtistService,
     private authService: AuthService,
+    config: NgbModalConfig, private modalService: NgbModal
 
-  ) { }
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
 
   ngOnInit(): void {
@@ -66,27 +73,32 @@ export class ArtistEditComponent implements OnInit {
     console.log('Hier komt je save actie');
 
 
-    if (this.artist) {
 
+
+
+  }
+  public back() {
+    this.modalReference.close();
+
+    this.router.navigate(['/artist']);
+  }
+  open(content: any) {
+    this.modalReference = this.modalService.open(content);
+    if (this.artist) {
+      console.log(this.artist)
       this.artistService.putItem(this.artistForm.value, this.artistId).subscribe()
-      this.router.navigate(['/artist']);
+
 
     } else {
 
       this.artist = this.artistForm.value
       this.artist.userId = this.authService.getCurrentUserId()
       this.artistService.postItem(this.artist).subscribe()
-      this.router.navigate(['/artist']);
+
 
     }
-
-
   }
-  public cancel() {
-    console.log(this.router.url)
-    this.subs.unsubscribe();
-    this.router.navigate(['/artist']);
-  }
+
   ngOnDestroy(): void {
     if (this.subs) {
       this.subs.unsubscribe();

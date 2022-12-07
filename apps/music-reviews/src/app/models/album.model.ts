@@ -1,4 +1,5 @@
 import { Genre } from './genre.enum';
+import { Review } from './review.model';
 
 export interface Album {
     // Optioneel description attribuut
@@ -9,13 +10,12 @@ export interface Album {
     description: string,
     releaseDate: string,
     language: string,
-    rating: number,
-
+    rating?: number,
     artistId: string,
     coverImg: string,
     genre: string,
     userId: string,
-    // public reviews?: Review[],
+    reviews?: Review[],
 
 
 }

@@ -48,6 +48,10 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
     this.router.navigate(['/album'])
   }
+  delete() {
+    this.artistService.delete(this.artistId).subscribe()
+    this.router.navigate(['/artist']);
+  }
 
   ngOnDestroy(): void {
     if (this.subs) {

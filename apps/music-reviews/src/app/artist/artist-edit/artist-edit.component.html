@@ -1,14 +1,15 @@
 
-<h1>{{ artist.name }}</h1>
+<h1>{{ artist?.name }}</h1>
 
 
 <div class="row">
 
-    <form class="form" [formGroup]="artistForm" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup]="artistForm">
         <div class="form-group">
             <label for="nameInput">Naam</label>
-            <input type="name" class="form-control" id="nameInput" ngif
-                [(ngModel)]="artist.name"
+            <input type="name" class="form-control" id="nameInput"
+                [ngModel]=" artist?.name"
+
                 formControlName="name"
                 type="text"
                 placeholder="Naam van de artiest">
@@ -19,7 +20,7 @@
             <label for="descriptionInput">Beschrijving</label>
 
             <textarea class="form-control" id="descriptionInput"
-                [(ngModel)]="artist.description"
+                [ngModel]=" artist?.description"
                 formControlName="description"
                 type="text"
                 placeholder="Korte beschrijving" rows="3"></textarea>
@@ -30,11 +31,11 @@
         <div class="form-group col-md-4">
             <label for="inputGenre">Genre</label>
             <select type="text" formControlName="genre"
-                (change)="onGenre()"
-                id="inputGenre" class="form-control">
-                <option *ngFor="let genre of keys(genres)"
-                    [ngValue]="genres[genre]">{{genre}}</option>
+                [ngModel]=" artist?.genre"
 
+                id="inputGenre" class="form-control">
+                <option *ngFor="let symbol of keys(genres)"
+                    [ngValue]="genres[symbol]">{{symbol}}</option>
             </select>
             <!-- <p class="warning" *ngIf="artistForm.controls['genre'].invalid">Genre
                 is verplicht</p> -->
@@ -44,7 +45,8 @@
 
             <input id="birthday" type="date" class="form-control"
                 name="BirthDay"
-                [(ngModel)]="artist.birthday"
+                [ngModel]=" artist?.birthday"
+
                 placeholder="GeboorteDatum/Sinds"
                 formControlName="birthday">
             <!-- <p class="warning" *ngIf="artistForm.controls['birthday'].invalid">Datum
@@ -55,13 +57,28 @@
             <label for="descriptionInput">Online foto</label>
 
             <input type="link" class="form-control" id="nameInput"
-                [(ngModel)]="artist.coverImg"
+                [ngModel]=" artist?.coverImg"
 
                 placeholder="Naam van de artiest"
                 type="text"
                 formControlName="coverImg">
         </div>
-        <div class="form-group"> <button type="submit" class="btn btn-primary">Opslaan</button></div>
+        <div class="form-group"> <button type="button"
+                (click)="open(content)"
+                class="btn btn-primary">Opslaan</button></div>
     </form>
 
-</div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+            <button type="button" class="btn-close" aria-label="Close"
+                (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <p>Hello, World!</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="back()">Opslaan</button>
+        </div>
+    </ng-template>
