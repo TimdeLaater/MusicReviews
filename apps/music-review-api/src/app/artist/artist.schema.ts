@@ -1,11 +1,11 @@
 
 import { Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-export type ArtistSchema = Artist & Document
+import { Document } from 'mongoose';
+export type ArtistDocument = Artist & Document;
 import { v4 as uuid } from 'uuid';
 
 export class Artist {
-    @Prop({ default: uuid })
+    @Prop({ default: uuid, index: true })
     id: string;
     @Prop({ required: true })
     name: string;
@@ -17,12 +17,12 @@ export class Artist {
     birthDay: string;
     @Prop({ required: true })
     coverImg: string;
-    @Prop({
-        required: true,
-        type: MongooseSchema.Types.ObjectId,
-        ref: 'User',
-    })
-    userId: string;
+    // @Prop({
+    //     required: true,
+    //     type: MongooseSchema.Types.ObjectId,
+    //     ref: 'User',
+    // })
+    // userId: string;
 
 
 

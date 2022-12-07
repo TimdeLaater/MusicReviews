@@ -1,10 +1,25 @@
 export interface User {
   // Optioneel description attribuut
 
-  id: number,
+  _id: string,
   name: string,
   email: string,
   password: string,
-  birthday: string,
+  token?: Token,
 
 }
+export interface AuthUser {
+  user: User,
+  token: Token,
+}
+export interface Token {
+  token: string
+}
+export interface LoginUser {
+  email: string,
+  password: string,
+}
+export interface RegisterUser extends LoginUser{
+  name: string,
+}
+

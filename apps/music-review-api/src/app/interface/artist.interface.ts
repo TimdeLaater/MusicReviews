@@ -1,11 +1,8 @@
-import { Genre } from './genre.enum';
-export interface Artist {
+export interface ArtistInput {
 
-    _id?: string,
     name: string,
     description: string,
     genre: string,
     birthday: string,
     coverImg: string,
-    userId?: string;
 }

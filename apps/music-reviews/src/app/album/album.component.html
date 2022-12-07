@@ -1,12 +1,27 @@
-<p>album works!</p>
-<div *ngFor="let album of albums">
-    <div class="card" style="width: 18rem;">
-        <img src={{album.coverImg}} class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{album.name}}</h5>
-            <p class="card-text">{{album.discription}}</p>
-            <p class="card-text">Genre:{{album.genre}}</p>
-            <a routerLink="detail/{{album?.id}}" class="btn btn-primary">Details</a>
+<div class="row">
+    <div class="col sm">
+        <h1>Albums</h1>
+    </div>
+    <div class="col sm">
+        <a routerLink="add" class="btn
+            btn-success btn-lg">Voeg toe</a>
+    </div>
+
+</div>
+
+<div class="row"><div class="card-group">
+        <div *ngFor="let album of albums">
+
+            <div class="card" style="width: 18rem;">
+                <img src={{album.coverImg}} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{album.name}}</h5>
+                    <p class="card-text">{{album.description}}</p>
+                    <p class="card-text">Genre:{{album.genre}}</p>
+                    <a routerLink="detail/{{album?._id}}" class="btn
+                        btn-primary">Details</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

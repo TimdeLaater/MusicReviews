@@ -1,1 +1,88 @@
-<p>navbar works!</p>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+    <div class="container">
+        <a
+            class="navbar-brand"
+            routerLink="/"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }">MusicReview</a>
+        <div class="collapse navbar-collapse flex-column">
+
+            <div class="container">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" routerLink="/dashboard">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" routerLink="/artist">Artist</a>
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" routerLink="/album">Album</a>
+
+                    </li>
+
+
+
+
+                </ul>
+
+                <ul class="navbar-nav right">
+
+                    <li *ngIf="(loggedInUser$ | async) === undefined"
+                        class="nav-item">
+
+                        <a
+
+                            class="nav-link"
+
+                            routerLink="/register"
+                            [routerLinkActive]="['active']">Register</a>
+
+                    </li>
+
+                    <li *ngIf="(loggedInUser$ | async) === undefined"
+                        class="nav-item">
+
+                        <a
+
+                            class="nav-link"
+
+                            routerLink="/login"
+
+                            [routerLinkActive]="['active']">Login</a>
+
+                    </li>
+
+                    <div *ngIf="loggedInUser$ | async as user" ngbDropdown
+                        class="d-inline-block">
+
+                        <a class="nav-link" id="profile" ngbDropdownToggle>
+
+                            {{ user.name }}
+
+                        </a>
+
+                        <div ngbDropdownMenu aria-labelledby="profie">
+
+                            <button ngbDropdownItem>Profile</button>
+
+                            <button ngbDropdownItem (click)="logout()">Log Out</button>
+                        </div>
+
+                    </div>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</nav>

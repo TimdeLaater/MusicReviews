@@ -11,15 +11,17 @@ export class AlbumService {
     constructor(
         @InjectModel(Album.name)
         private album: Model<Album>,
-        @InjectModel(User.name) private userModel: Model<UserDocument>
+        // @InjectModel(User.name) private userModel: Model<UserDocument>
     ) { }
     async getAll(): Promise<Album[]> {
-        return this.album.find({});
+        console.log(this.album.find().exec(), "Hierzo");
+
+        return this.album.find().exec();
     }
-    async create(name: string, discription: string, genre: string, releaseDate: string, coverImg: string, userId: string) {
-        const user = await this.userModel.findOne({ id: userId })
-        if (user == null) throw new Error("user doesn't exist");
-        const newAlbum = new this.album({ name: name, discription: discription, genre: genre, releaseDate: releaseDate, coverImg: coverImg, userId: userId });
+    async create(name: string, description: string, genre: string, releaseDate: string, coverImg: string, userId: string) {
+        // const user = await this.userModel.findOne({ id: userId })
+        // if (user == null) throw new Error("user doesn't exist");
+        const newAlbum = new this.album({ name: name, description: description, genre: genre, releaseDate: releaseDate, coverImg: coverImg, userId: userId });
         await newAlbum.save();
 
     }
@@ -28,10 +30,10 @@ export class AlbumService {
         return albumById
     }
     async delete(id: string) {
-        await this.userModel.findByIdAndDelete(id)
+        // await this.userModel.findByIdAndDelete(id)
     }
-    async edit(id: string, name: string, discription: string, genre: string, releaseDate: string, coverImg: string) {
-        await this.album.findOneAndUpdate({ id: id }, { name: name, discription: discription, genre: genre, releaseDate: releaseDate, coverImg: coverImg });
+    async edit(id: string, name: string, description: string, genre: string, releaseDate: string, coverImg: string) {
+        await this.album.findOneAndUpdate({ id: id }, { name: name, description: description, genre: genre, releaseDate: releaseDate, coverImg: coverImg });
 
     }
 

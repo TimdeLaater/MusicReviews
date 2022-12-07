@@ -1,23 +1,26 @@
 import { AlbumComponent } from './album/album.component';
 import { ReviewComponent } from './review/review.component';
-import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { LayoutComponent } from './core/layout/layout.component';
 import { ArtistComponent } from './artist/artist.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserAddComponent } from './user/user-add/user-add.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { AlbumDetailComponent } from './album/album-detail/album-detail.component';
+import { AlbumAddComponent } from './album/album-add/album-add.component';
+import { AlbumEditComponent } from './album/album-edit/album-edit.component';
+import { ArtistEditComponent } from './artist/artist-edit/artist-edit.component';
+import { ArtistDetailComponent } from './artist/artist-detail/artist-detail.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +30,14 @@ import { AlbumDetailComponent } from './album/album-detail/album-detail.componen
     FooterComponent,
     NavbarComponent,
     ReviewComponent,
-    UserComponent,
-    UserAddComponent,
-    UserDetailComponent,
-    UserEditComponent,
-    AboutComponent,
     AlbumDetailComponent,
     AlbumComponent,
+    AlbumAddComponent,
+    AlbumEditComponent,
+    ArtistEditComponent,
+    ArtistDetailComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

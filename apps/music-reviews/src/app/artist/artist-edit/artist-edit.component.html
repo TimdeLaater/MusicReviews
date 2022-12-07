@@ -1,0 +1,67 @@
+
+<h1>{{ artist.name }}</h1>
+
+
+<div class="row">
+
+    <form class="form" [formGroup]="artistForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="nameInput">Naam</label>
+            <input type="name" class="form-control" id="nameInput" ngif
+                [(ngModel)]="artist.name"
+                formControlName="name"
+                type="text"
+                placeholder="Naam van de artiest">
+            <!-- <p class="warning" *ngIf="artistForm.controls['name'].invalid">Naam
+                is verplicht</p> -->
+        </div>
+        <div class="form-group">
+            <label for="descriptionInput">Beschrijving</label>
+
+            <textarea class="form-control" id="descriptionInput"
+                [(ngModel)]="artist.description"
+                formControlName="description"
+                type="text"
+                placeholder="Korte beschrijving" rows="3"></textarea>
+            <!-- <p class="warning"
+                *ngIf="artistForm.controls['description'].invalid">Korte
+                beschrijving is verplicht</p> -->
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputGenre">Genre</label>
+            <select type="text" formControlName="genre"
+                (change)="onGenre()"
+                id="inputGenre" class="form-control">
+                <option *ngFor="let genre of keys(genres)"
+                    [ngValue]="genres[genre]">{{genre}}</option>
+
+            </select>
+            <!-- <p class="warning" *ngIf="artistForm.controls['genre'].invalid">Genre
+                is verplicht</p> -->
+        </div>
+        <div class="form-group">
+            <label for="inputBirthDay">Geboortedatum/ Sinds</label>
+
+            <input id="birthday" type="date" class="form-control"
+                name="BirthDay"
+                [(ngModel)]="artist.birthday"
+                placeholder="GeboorteDatum/Sinds"
+                formControlName="birthday">
+            <!-- <p class="warning" *ngIf="artistForm.controls['birthday'].invalid">Datum
+                is
+                verplicht</p> -->
+        </div>
+        <div class="form-group">
+            <label for="descriptionInput">Online foto</label>
+
+            <input type="link" class="form-control" id="nameInput"
+                [(ngModel)]="artist.coverImg"
+
+                placeholder="Naam van de artiest"
+                type="text"
+                formControlName="coverImg">
+        </div>
+        <div class="form-group"> <button type="submit" class="btn btn-primary">Opslaan</button></div>
+    </form>
+
+</div>

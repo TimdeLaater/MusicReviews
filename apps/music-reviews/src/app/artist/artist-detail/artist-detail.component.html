@@ -1,0 +1,19 @@
+<div class="Artist-detail">
+    <div class="row">
+        <div class="col-sm">
+            <img src={{artist.coverImg}} class="card-img-top" alt="...">
+            <a routerLink="../.." class="btn
+                btn-dark">Terug</a>
+            <a *ngIf="authService.userMayEdit(artist.userId) | async"
+                routerLink="edit" class="btn
+                btn-warning">Pas aan</a>
+        </div>
+        <div class="col-sm">
+            <h1>{{artist.name}}</h1>
+            <p class="card-text">{{artist.description}}</p>
+            <p class="card-text">Genre:{{artist.genre}}</p>
+        </div>
+
+
+    </div>
+</div>

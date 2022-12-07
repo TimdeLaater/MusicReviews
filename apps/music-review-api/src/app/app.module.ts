@@ -1,3 +1,5 @@
+import { ArtistModule } from './artist/artist.module';
+import { AlbumModule } from './album/album.module';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { RouterModule } from '@nestjs/core';
 
@@ -15,6 +17,8 @@ import { DataModule } from './data.module';
     ),
     AuthModule,
     DataModule,
+    AlbumModule,
+    ArtistModule,
     RouterModule.register([
       {
         path: 'auth-api',
@@ -24,13 +28,21 @@ import { DataModule } from './data.module';
         path: 'data-api',
         module: DataModule,
       },
+      {
+        path: 'album',
+        module: AlbumModule,
+      }, {
+        path: 'artist',
+        module: ArtistModule,
+      },
+
     ]),
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(TokenMiddleware).forRoutes('data-api');
-  }
+  // configure(consumer: MiddlewareConsumer) {
+  //   consumer.apply(TokenMiddleware).forRoutes('data-api');
+  // }
 }

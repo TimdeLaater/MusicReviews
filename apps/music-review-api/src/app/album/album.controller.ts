@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
 import { AlbumService } from "./album.service";
 import { Album } from './album.schema';
-import { InjectToken } from "../auth/token.decorator";
+
 @Controller()
 export class AlbumController {
   constructor(private readonly albumService: AlbumService) { }
