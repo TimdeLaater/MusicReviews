@@ -1,9 +1,10 @@
-import { environment } from './../../../../music-review-api/src/environments/environment';
+
 import { Genre } from './../models/genre.enum';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable } from "rxjs";
 import { Album } from "../models/album.model";
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -33,10 +34,7 @@ export class AlbumService {
 
 
 
-    baseUrl: string | any = 'http://localhost:3333'
     constructor(private http: HttpClient) {
-        console.log(this.baseUrl, "API")
-
 
     }
     getTestList(): Album[] {
@@ -44,26 +42,26 @@ export class AlbumService {
     }
 
     postItem(item: Album): Observable<Album> {
-        return this.http.post<any>(`${this.baseUrl}/album/create`, item)
+        return this.http.post<any>(`${environment.SERVER_API_URL}/album`, item)
     }
 
     putItem(item: Album, id: any): Observable<Album> {
-        return this.http.put<any>(`${this.baseUrl}/album/${id}`, item)
+        return this.http.put<any>(`${environment.SERVER_API_URL}/album/${id}`, item)
     }
 
     getById(id: any): Observable<Album> {
-        return this.http.get<Album>(`${this.baseUrl}/album/${id}`)
+        return this.http.get<Album>(`${environment.SERVER_API_URL}/album/${id}`)
     }
 
     delete(id: any): Observable<Album> {
-        return this.http.delete<Album>(`${this.baseUrl}/album/${id}`)
+        return this.http.delete<Album>(`${environment.SERVER_API_URL}/album/${id}`)
     }
     getAll(): Observable<Album[]> {
-        return this.http.get<Album[]>(`${this.baseUrl}/album/`)
+        return this.http.get<Album[]>(`${environment.SERVER_API_URL}/album/`)
 
     }
 
     getFromUser(id: any): Observable<Album[]> {
-        return this.http.get<Album[]>(`${this.baseUrl}/album/user/${id}`)
+        return this.http.get<Album[]>(`${environment.SERVER_API_URL}/album/user/${id}`)
     }
 }

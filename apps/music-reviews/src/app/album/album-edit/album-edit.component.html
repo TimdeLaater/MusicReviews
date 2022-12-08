@@ -1,1 +1,114 @@
-<p>album-edit works!</p>
+<h1>Album</h1>
+<h1>{{ album?.name }}</h1>
+
+
+<div class="row">
+
+    <form class="form" [formGroup]="albumForm">
+        <div class="form-group">
+            <label for="nameInput">Naam</label>
+            <input type="name" class="form-control" id="nameInput"
+                [ngModel]=" album?.name"
+
+                formControlName="name"
+                type="text"
+                placeholder="Naam van de artiest">
+            <!-- <p class="warning" *ngIf="artistForm.controls['name'].invalid">Naam
+                is verplicht</p> -->
+        </div>
+        <div class="form-group">
+            <label for="descriptionInput">Beschrijving</label>
+
+            <textarea class="form-control" id="descriptionInput"
+                [ngModel]=" album?.description"
+                formControlName="description"
+                type="text"
+                placeholder="Korte beschrijving" rows="3"></textarea>
+            <!-- <p class="warning"
+                *ngIf="artistForm.controls['description'].invalid">Korte
+                beschrijving is verplicht</p> -->
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="inputBirthDay">Uitgebracht op</label>
+
+            <input id="releaseDate" type="date" class="form-control"
+                name="releaseDate"
+                [ngModel]=" album?.releaseDate"
+                placeholder="GeboorteDatum/Sinds"
+                formControlName="releaseDate">
+            <!-- <p class="warning" *ngIf="artistForm.controls['birthday'].invalid">Datum
+                is
+                verplicht</p> -->
+        </div>
+        <div class="form-group">
+            <label for="descriptionInput">Online foto</label>
+
+            <input type="link" class="form-control" id="nameInput"
+                [ngModel]=" album?.coverImg"
+
+                placeholder="URL van de foto"
+                type="text"
+                formControlName="coverImg">
+        </div>
+        <div class="form-group">
+            <label for="descriptionInput">Taal</label>
+
+            <input type="link" class="form-control" id="nameInput"
+                [ngModel]=" album?.language"
+
+                placeholder="In welke taal is het album"
+                type="text"
+                formControlName="language">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="inputGenre">Genre</label>
+                <select type="text" formControlName="genre"
+                    [ngModel]=" album?.genre"
+
+                    id="inputGenre" class="form-control">
+                    <option *ngFor="let symbol of keys(genres)"
+                        [ngValue]="genres[symbol]">{{symbol}}</option>
+                </select>
+                <!-- <p class="warning" *ngIf="artistForm.controls['genre'].invalid">Genre
+                    is verplicht</p> -->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="artistId">Artiest</label>
+                <select type="text" formControlName="artistId"
+
+
+                    id="artistId" class="form-control">
+                    <option *ngFor="let artist of artistList"
+                        [ngValue]="artist._id">{{artist.name}}</option>
+                </select>
+                <p class="warning">Bestaat de artiest nog niet?<a routerLink=""
+                        (click)="toArtist()">Maak
+                        hier de artiest aan</a> </p>
+            </div>
+        </div>
+
+        <div class="form-group"> <button type="button"
+                (click)="open(content)"
+
+                class="btn btn-primary">Opslaan</button></div>
+    </form>
+
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Geslaagd</h4>
+            <button type="button" class="btn-close" aria-label="Close"
+                (click)="back()"></button>
+        </div>
+        <div class="modal-body">
+            <p>Het album is opgelagen!</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="back()">Naar
+                Albums</button>
+        </div>
+    </ng-template>

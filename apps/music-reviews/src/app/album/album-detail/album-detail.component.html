@@ -1,15 +1,25 @@
-
-<div class="row">
-    <div class="col-sm">
-        <img src={{album.coverImg}} class="card-img-top" alt="...">
+<div class="Album-detail">
+    <div class="row">
+        <div class="col-sm">
+            <img src={{album.coverImg}} class="card-img-top" alt="...">
+            <a routerLink="../.." class="btn
+                btn-dark">Terug</a>
+            <a *ngIf="authService.userMayEdit(album.userId) | async"
+                routerLink="edit" class="btn
+                btn-warning">Pas aan</a>
+            <button *ngIf="authService.userMayEdit(album.userId) | async"
+                class="btn
+                btn-danger"
+                (click)="delete()">Delete</button>
+        </div>
+        <div class="col-sm">
+            <h1>{{album.name}}</h1>
+            <p class="card-text">{{album.description}}</p>
+            <p class="card-text"><strong>Genre: </strong>{{album.genre}}</p>
+            <p class="card-text"><strong>Uitgebracht op: </strong>
+                {{album.releaseDate}}</p>
+        </div>
+        <strong></strong>
 
     </div>
-    <div class="col-sm">
-        <h1>{{album.name}}</h1>
-        <p class="card-text">{{album.description}}</p>
-        <p class="card-text">Genre:{{album.genre}}</p>
-    </div>
-
-    <a routerLink="../.." class="btn
-        btn-dark">Terug</a>
 </div>

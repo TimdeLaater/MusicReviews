@@ -1,9 +1,11 @@
+import { AuthService } from './../services/auth.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 import { Artist } from './../models/artist.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { catchError, Subscription } from 'rxjs';
+import { catchError, Observable, Subscription } from 'rxjs';
 import { ArtistService } from '../services/artist.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'music-review-artist',
@@ -13,10 +15,13 @@ import { ArtistService } from '../services/artist.service';
 export class ArtistComponent implements OnInit, OnDestroy {
   artists!: Artist[];
   subs: Subscription = new Subscription();
+  loggedInUser$!: Observable<User | undefined>;
+
   constructor(
     private artistService: ArtistService,
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthService
 
   ) {
 
@@ -24,7 +29,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
+    this.loggedInUser$ = this.authService.currentUser$;
 
     this.subs.add(
       this.artistService

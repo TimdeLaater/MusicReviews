@@ -45,7 +45,6 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
     });
   }
   public back() {
-    this.subs.unsubscribe();
     this.router.navigate(['/album'])
   }
   delete() {

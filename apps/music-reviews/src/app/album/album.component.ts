@@ -1,7 +1,9 @@
 import { AlbumService } from './../services/album.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Album } from '../models/album.model';
-import { catchError, Subscription } from 'rxjs';
+import { catchError, Observable, Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'music-review-album',
@@ -11,14 +13,17 @@ import { catchError, Subscription } from 'rxjs';
 export class AlbumComponent implements OnInit, OnDestroy {
   albums!: Album[];
   subs: Subscription = new Subscription();
+  loggedInUser$!: Observable<User | undefined>;
   constructor(
-    private albumservice: AlbumService
+    private albumservice: AlbumService,
+    private authService: AuthService
   ) {
 
   }
 
 
   ngOnInit() {
+    this.loggedInUser$ = this.authService.currentUser$;
 
 
     this.subs.add(
@@ -34,13 +39,6 @@ export class AlbumComponent implements OnInit, OnDestroy {
         })
     );
 
-    // console.log("stap 1")
-    // this.albumservice.getAll().subscribe((albumList) => {
-    //   console.log(albumList, "wel hier")
-    //   this.albums = albumList
-    // })
-    // this.albumservice.getAll().subscribe((res: Album[]) => this.albums = res)
-    // this.albums = this.albumservice.getTestList();
   }
 
   ngOnDestroy(): void {

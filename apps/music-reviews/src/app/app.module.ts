@@ -15,7 +15,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { AlbumDetailComponent } from './album/album-detail/album-detail.component';
-import { AlbumAddComponent } from './album/album-add/album-add.component';
 import { AlbumEditComponent } from './album/album-edit/album-edit.component';
 import { ArtistEditComponent } from './artist/artist-edit/artist-edit.component';
 import { ArtistDetailComponent } from './artist/artist-detail/artist-detail.component';
@@ -32,7 +31,6 @@ import { RegisterComponent } from './auth/register/register.component';
     ReviewComponent,
     AlbumDetailComponent,
     AlbumComponent,
-    AlbumAddComponent,
     AlbumEditComponent,
     ArtistEditComponent,
     ArtistDetailComponent,

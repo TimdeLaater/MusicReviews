@@ -14,7 +14,7 @@ export interface Album {
     artistId: string,
     coverImg: string,
     genre: string,
-    userId: string,
+    userId?: string,
     reviews?: Review[],
 
 

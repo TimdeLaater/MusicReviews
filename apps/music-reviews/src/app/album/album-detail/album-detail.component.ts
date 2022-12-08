@@ -4,6 +4,7 @@ import { Album } from './../../models/album.model';
 import { Component, OnInit } from '@angular/core';
 import { AlbumService } from '../../services/album.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'music-review-app-album-detail',
@@ -13,8 +14,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AlbumDetailComponent implements OnInit {
   album!: Album;
   subs: Subscription = new Subscription();
-  id: string | null = null;
-  constructor(private albumService: AlbumService, private route: ActivatedRoute, private router: Router) {
+  id!: string | null;
+  constructor(private albumService: AlbumService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public authService: AuthService
+  ) {
 
   }
 
@@ -46,6 +51,7 @@ export class AlbumDetailComponent implements OnInit {
 
     this.router.navigate(['/album']);
   }
+
 
   ngOnDestroy(): void {
     if (this.subs) {
