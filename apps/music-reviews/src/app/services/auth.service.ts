@@ -153,6 +153,17 @@ export class AuthService {
         }
         return undefined;
     }
+    getCurrentUserName(): string | undefined {
+        const userData = localStorage.getItem(this.CURRENT_USER);
+        if (userData) {
+            const user: User = JSON.parse(userData);
+
+
+            return user.name
+        }
+        return undefined;
+    }
+
 
 }
 const url = `${environment.SERVER_API_URL}/login`;

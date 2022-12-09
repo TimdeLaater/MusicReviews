@@ -6,6 +6,7 @@ import { Artist } from '../../models/artist.model';
 import { User } from '../../models/user.model';
 import { ArtistService } from '../../services/artist.service';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'music-review-app-artist-detail',
@@ -16,12 +17,14 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
   artistId: string | null = null;
   artist!: Artist;
   subs: Subscription = new Subscription();
-
+  userID!: string | undefined;
+  owner!: User;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private artistService: ArtistService,
-    public authService: AuthService
+    public authService: AuthService,
+    private userService: UserService
 
   ) { }
 
@@ -40,6 +43,8 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
           .subscribe((item) => {
             console.log(item, "Api return");
             this.artist = item;
+            this.userID = item.userId
+            this.getOwner(this.userID)
           })
       );
     });
@@ -56,5 +61,18 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
     if (this.subs) {
       this.subs.unsubscribe();
     }
+  }
+  getOwner(id: any) {
+    this.subs.add(
+      this.userService
+        .getById(id).pipe(
+
+      ).subscribe((item) => {
+        console.log(item, "Owner")
+        this.owner = item
+      }
+
+      )
+    )
   }
 }

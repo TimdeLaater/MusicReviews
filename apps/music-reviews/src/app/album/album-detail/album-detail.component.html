@@ -1,25 +1,157 @@
 <div class="Album-detail">
+    <a routerLink="../.." class="btn
+        btn-dark btn-small">Terug</a>
+    <div class="row">
+
+
+
+        <div class="col-sm">
+            <h1>{{album?.name}}</h1>
+            <p class="card-text">{{album?.description}}</p>
+            <p class="card-text"><strong>Van: </strong>{{artist?.name}}</p>
+            <p class="card-text"><strong>Genre: </strong>{{album?.genre}}</p>
+            <p class="card-text"><strong>Uitgebracht op: </strong>
+                {{album?.releaseDate}}</p>
+
+            <p class="card-text"><strong>gemaakt door: </strong>
+                {{owner.name}}</p>
+
+            <br>
+            <div class="row">
+
+
+                <div class="col-sm"> <a
+                        *ngIf="authService.userMayEdit(album.userId) |
+                        async"
+                        routerLink="edit" class="btn
+                        btn-warning">Pas aan</a></div>
+                <div class="col-sm"><button
+                        *ngIf="authService.userMayEdit(album.userId) |
+                        async"
+                        class="btn
+                        btn-danger"
+                        (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <img src={{album?.coverImg}} class="img" alt="...">
+
+
+
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-sm">
-            <img src={{album.coverImg}} class="card-img-top" alt="...">
-            <a routerLink="../.." class="btn
-                btn-dark">Terug</a>
-            <a *ngIf="authService.userMayEdit(album.userId) | async"
-                routerLink="edit" class="btn
-                btn-warning">Pas aan</a>
-            <button *ngIf="authService.userMayEdit(album.userId) | async"
-                class="btn
-                btn-danger"
-                (click)="delete()">Delete</button>
+            <div class="scrol-cards">
+                <div *ngFor="let review of album.reviews">
+                    <div class="card" style="height: auto;">
+                        <div class="card-header">
+                            {{review?.title}}
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{review?.review}}</p>
+                                <p><strong>Rating: </strong>{{review?.rating}}</p>
+                                <footer class="blockquote-footer">{{review?.userName}}
+                                    <button
+                                        *ngIf="authService.userMayEdit(review.userId)
+                                        |
+                                        async"
+                                        class="btn
+                                        btn-danger"
+                                        (click)="deleteReview(review._id)">Delete</button>
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="col-sm">
-            <h1>{{album.name}}</h1>
-            <p class="card-text">{{album.description}}</p>
-            <p class="card-text"><strong>Genre: </strong>{{album.genre}}</p>
-            <p class="card-text"><strong>Uitgebracht op: </strong>
-                {{album.releaseDate}}</p>
-        </div>
-        <strong></strong>
+            <form *ngIf="loggedInUser$ | async as user" class="form-signin"
+                [formGroup]="reviewForm"
+                (ngSubmit)="onFormSubmitted()">
+                <div class="form-group">
+                    <label for="inputTitle">Titel</label>
+                    <input
+                        type="title"
+                        class="form-control"
+                        placeholder="Titel"
+                        formControlName="title"
+                        id="inputEmail"
+                        aria-describedby="emailHelp"
+                        [ngClass]="{
+                        'is-invalid':
+                        reviewForm.get('title')?.invalid &&
+                        reviewForm.get('title')?.touched
+                        }"
+                        />
+                    <span
+                        *ngIf="!reviewForm.get('title')?.valid &&
+                        reviewForm.get('title')?.touched"
+                        class="invalid-feedback">
+                        <p id="title-invalid">Voer een correcte titel in</p>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputReview">Review</label>
+                    <textarea class="form-control" id="descriptionInput"
+                        [ngClass]="{
+                        'is-invalid':
+                        reviewForm.get('review')?.invalid &&
+                        reviewForm.get('review')?.touched
+                        }"
+                        formControlName="review"
+                        type="text"
+                        placeholder="Review van het album" rows="3"></textarea>
+                    <span
+                        *ngIf="
+                        !reviewForm.get('review')?.valid &&
+                        reviewForm.get('review')?.touched
+                        "
+                        class="invalid-feedback">
+                        <p id="password-invalid">Vul een geldige beschrijving in</p>
+                    </span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputrating">Aantal sterren</label>
+                    <select type="text" formControlName="rating"
 
+                        [ngClass]="{
+                        'is-invalid':
+                        reviewForm.get('rating')?.invalid &&
+                        reviewForm.get('rating')?.touched
+                        }"
+                        id="rating" class="form-control">
+                        <option></option>
+                        <option *ngFor="let symbol of rating">{{symbol}}</option>
+                    </select>
+                    <span
+                        *ngIf="
+                        !reviewForm.get('rating')?.valid &&
+                        reviewForm.get('rating')?.touched
+                        "
+                        class="invalid-feedback">
+                        <p id="password-invalid">Kies een aantal sterren</p>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <button
+                        id="submitbutton"
+                        class="btn btn-lg btn-primary btn-block"
+                        type="submit"
+                        [disabled]="!reviewForm.valid">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+
+
 </div>

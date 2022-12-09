@@ -9,24 +9,44 @@
             <label for="nameInput">Naam</label>
             <input type="name" class="form-control" id="nameInput"
                 [ngModel]=" album?.name"
-
+                [ngClass]="{
+                'is-invalid':
+                albumForm.get('name')?.invalid &&
+                albumForm.get('name')?.touched
+                }"
                 formControlName="name"
                 type="text"
-                placeholder="Naam van de artiest">
-            <!-- <p class="warning" *ngIf="artistForm.controls['name'].invalid">Naam
-                is verplicht</p> -->
+                placeholder="Naam van het album">
+            <span
+                *ngIf="
+                !albumForm.get('name')?.valid &&
+                albumForm.get('name')?.touched
+                "
+                class="invalid-feedback">
+                <p id="name-invalid">Vul een geldige naam in</p>
+            </span>
         </div>
         <div class="form-group">
             <label for="descriptionInput">Beschrijving</label>
 
             <textarea class="form-control" id="descriptionInput"
                 [ngModel]=" album?.description"
+                [ngClass]="{
+                'is-invalid':
+                albumForm.get('description')?.invalid &&
+                albumForm.get('description')?.touched
+                }"
                 formControlName="description"
                 type="text"
                 placeholder="Korte beschrijving" rows="3"></textarea>
-            <!-- <p class="warning"
-                *ngIf="artistForm.controls['description'].invalid">Korte
-                beschrijving is verplicht</p> -->
+            <span
+                *ngIf="
+                !albumForm.get('description')?.valid &&
+                albumForm.get('description')?.touched
+                "
+                class="invalid-feedback">
+                <p id="password-invalid">Vul een geldige beschrijving in</p>
+            </span>
         </div>
 
 
@@ -37,54 +57,112 @@
             <input id="releaseDate" type="date" class="form-control"
                 name="releaseDate"
                 [ngModel]=" album?.releaseDate"
+                [ngClass]="{
+                'is-invalid':
+                albumForm.get('releasDate')?.invalid &&
+                albumForm.get('releasDate')?.touched
+                }"
                 placeholder="GeboorteDatum/Sinds"
                 formControlName="releaseDate">
-            <!-- <p class="warning" *ngIf="artistForm.controls['birthday'].invalid">Datum
-                is
-                verplicht</p> -->
+            <span
+                *ngIf="
+                !albumForm.get('releasDate')?.valid &&
+                albumForm.get('releasDate')?.touched
+                "
+                class="invalid-feedback">
+                <p id="password-invalid">Vul een geldige releaseDate in</p>
+            </span>
         </div>
         <div class="form-group">
             <label for="descriptionInput">Online foto</label>
 
             <input type="link" class="form-control" id="nameInput"
                 [ngModel]=" album?.coverImg"
-
+                [ngClass]="{
+                'is-invalid':
+                albumForm.get('coverImg')?.invalid &&
+                albumForm.get('coverImg')?.touched
+                }"
                 placeholder="URL van de foto"
                 type="text"
                 formControlName="coverImg">
+            <span
+                *ngIf="
+                !albumForm.get('coverImg')?.valid &&
+                albumForm.get('coverImg')?.touched
+                "
+                class="invalid-feedback">
+                <p id="password-invalid">Vul een geldige link in</p>
+            </span>
         </div>
         <div class="form-group">
             <label for="descriptionInput">Taal</label>
 
             <input type="link" class="form-control" id="nameInput"
                 [ngModel]=" album?.language"
-
+                [ngClass]="{
+                'is-invalid':
+                albumForm.get('language')?.invalid &&
+                albumForm.get('language')?.touched
+                }"
                 placeholder="In welke taal is het album"
                 type="text"
                 formControlName="language">
+            <span
+                *ngIf="
+                !albumForm.get('language')?.valid &&
+                albumForm.get('language')?.touched
+                "
+                class="invalid-feedback">
+                <p id="password-invalid">Vul een geldige taal in</p>
+            </span>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="inputGenre">Genre</label>
                 <select type="text" formControlName="genre"
                     [ngModel]=" album?.genre"
-
+                    [ngClass]="{
+                    'is-invalid':
+                    albumForm.get('genre')?.invalid &&
+                    albumForm.get('genre')?.touched
+                    }"
                     id="inputGenre" class="form-control">
                     <option *ngFor="let symbol of keys(genres)"
                         [ngValue]="genres[symbol]">{{symbol}}</option>
                 </select>
-                <!-- <p class="warning" *ngIf="artistForm.controls['genre'].invalid">Genre
-                    is verplicht</p> -->
+                <span
+                    *ngIf="
+                    !albumForm.get('genre')?.valid &&
+                    albumForm.get('genre')?.touched
+                    "
+                    class="invalid-feedback">
+                    <p id="password-invalid">Kies een genre</p>
+                </span>
             </div>
             <div class="form-group col-md-6">
                 <label for="artistId">Artiest</label>
                 <select type="text" formControlName="artistId"
-
+                    [ngModel]=" album?.artistId"
+                    [ngClass]="{
+                    'is-invalid':
+                    albumForm.get('artistId')?.invalid &&
+                    albumForm.get('artistId')?.touched
+                    }"
 
                     id="artistId" class="form-control">
                     <option *ngFor="let artist of artistList"
                         [ngValue]="artist._id">{{artist.name}}</option>
                 </select>
+                <span
+                    *ngIf="
+                    !albumForm.get('artistId')?.valid &&
+                    albumForm.get('artistId')?.touched
+                    "
+                    class="invalid-feedback">
+                    <p id="password-invalid">Kies een artiest</p>
+                </span>
+
                 <p class="warning">Bestaat de artiest nog niet?<a routerLink=""
                         (click)="toArtist()">Maak
                         hier de artiest aan</a> </p>
@@ -93,7 +171,7 @@
 
         <div class="form-group"> <button type="button"
                 (click)="open(content)"
-
+                [disabled]="!albumForm.valid"
                 class="btn btn-primary">Opslaan</button></div>
     </form>
 

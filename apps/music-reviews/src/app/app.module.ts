@@ -1,5 +1,4 @@
 import { AlbumComponent } from './album/album.component';
-import { ReviewComponent } from './review/review.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { LayoutComponent } from './core/layout/layout.component';
@@ -28,7 +27,6 @@ import { RegisterComponent } from './auth/register/register.component';
     LayoutComponent,
     FooterComponent,
     NavbarComponent,
-    ReviewComponent,
     AlbumDetailComponent,
     AlbumComponent,
     AlbumEditComponent,

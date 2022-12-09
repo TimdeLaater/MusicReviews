@@ -1,10 +1,12 @@
 
+
 import { Genre } from './../models/genre.enum';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable } from "rxjs";
 import { Album } from "../models/album.model";
 import { environment } from '../../environments/environment';
+import { Review } from '../models/review.model';
 
 @Injectable({
     providedIn: 'root'
@@ -60,8 +62,11 @@ export class AlbumService {
         return this.http.get<Album[]>(`${environment.SERVER_API_URL}/album/`)
 
     }
-
-    getFromUser(id: any): Observable<Album[]> {
-        return this.http.get<Album[]>(`${environment.SERVER_API_URL}/album/user/${id}`)
+    postReview(id: any, item: Review): Observable<Review> {
+        return this.http.post<any>(`${environment.SERVER_API_URL}/album/${id}/review`, item)
     }
+    deleteReview(id: any, reviewId: any): Observable<Review> {
+        return this.http.delete<any>(`${environment.SERVER_API_URL}/album/${id}/review/${reviewId}`)
+    }
+
 }

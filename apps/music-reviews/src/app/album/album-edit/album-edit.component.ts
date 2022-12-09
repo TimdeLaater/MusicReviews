@@ -40,6 +40,18 @@ export class AlbumEditComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    this.albumForm = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      genre: new FormControl(null, Validators.required),
+      releaseDate: new FormControl(null, Validators.required),
+      coverImg: new FormControl(null, Validators.required),
+      language: new FormControl(null, Validators.required),
+      artistId: new FormControl(null, Validators.required),
+
+
+    });
+
     console.log(this.genres)
     this.route.paramMap.subscribe((params) => {
       this.albumId = params.get('id');
@@ -55,6 +67,7 @@ export class AlbumEditComponent implements OnInit, OnDestroy {
               // console.log(item, "Api return");
               this.album = item;
             })
+
         );
       }
       this.subs.add(
@@ -69,18 +82,19 @@ export class AlbumEditComponent implements OnInit, OnDestroy {
 
           })
       );
+      this.albumForm.setValue({
+        name: this.album.name,
+        description: this.album.description,
+        genre: this.album.genre,
+        releaseDate: this.album.releaseDate,
+        coverImg: this.album.coverImg,
+        language: this.album.language,
+        artistId: this.album.artistId,
+
+      })
     });
-    this.albumForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      genre: new FormControl(null, Validators.required),
-      releaseDate: new FormControl(null, Validators.required),
-      coverImg: new FormControl(null, Validators.required),
-      language: new FormControl(null, Validators.required),
-      artistId: new FormControl(null, Validators.required),
 
 
-    });
   }
 
 

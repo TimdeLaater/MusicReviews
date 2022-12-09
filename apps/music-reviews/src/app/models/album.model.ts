@@ -1,5 +1,6 @@
 import { Genre } from './genre.enum';
 import { Review } from './review.model';
+import { User } from './user.model';
 
 export interface Album {
     // Optioneel description attribuut
