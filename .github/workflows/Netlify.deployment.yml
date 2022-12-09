@@ -21,7 +21,7 @@ jobs:
       # - name: Run tests
       # - run: nx test
       - name: Build file
-        run: npm run buildWeb
+        run: nx serve --project music-reviews
 
       # deploy the application to netlify
       - name: Deploy to netlify
