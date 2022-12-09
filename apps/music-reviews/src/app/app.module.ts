@@ -19,6 +19,9 @@ import { ArtistEditComponent } from './artist/artist-edit/artist-edit.component'
 import { ArtistDetailComponent } from './artist/artist-detail/artist-detail.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { RegisterComponent } from './auth/register/register.component';
     ArtistDetailComponent,
     LoginComponent,
     RegisterComponent,
+    UserComponent,
+    UserDetailComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,4 +52,4 @@ import { RegisterComponent } from './auth/register/register.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

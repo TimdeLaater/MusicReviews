@@ -1,3 +1,5 @@
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { AlbumEditComponent } from './album/album-edit/album-edit.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -30,6 +32,11 @@ export const appRoutes: Route[] = [
             { path: 'artist/detail/:id/edit', component: ArtistEditComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
+            { path: 'user/detail/:id', component: UserDetailComponent },
+            { path: 'user/detail/:id/edit', component: UserEditComponent },
+
+
+
 
 
 

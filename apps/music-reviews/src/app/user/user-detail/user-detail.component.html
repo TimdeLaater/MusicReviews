@@ -1,0 +1,14 @@
+<div *ngIf="user$ | async as user">
+    <!-- we hebben hier nu een user variable uit de user$ Observable gehaald. -->
+    <h1>{{ user.name }}</h1>
+    <p>Email: {{ user.email }}</p>
+    <a routerLink="/" class="btn
+        btn-dark">Terug</a>
+    <!-- <a *ngIf="authService.userMayEdit(user._id) | async"
+    routerLink="edit" class="btn
+    btn-warning">Pas aan</a> -->
+    <button *ngIf="authService.userMayEdit(user._id) | async"
+        class="btn
+        btn-danger"
+        (click)="delete()">Delete</button>
+</div>

@@ -72,7 +72,9 @@
 
                         <div ngbDropdownMenu aria-labelledby="profie">
 
-                            <button ngbDropdownItem>Profile</button>
+                            <a routerLink="user/detail/{{user?._id}}"
+                                [routerLinkActive]="['active']"
+                                ngbDropdownItem>Profile</a>
 
                             <button ngbDropdownItem (click)="logout()">Log Out</button>
                         </div>
