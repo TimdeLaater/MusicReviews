@@ -9,9 +9,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class ArtistService {
-    baseUrl: string | any = 'http://localhost:3000'
     constructor(private http: HttpClient) {
-        console.log(this.baseUrl, "API")
     }
 
     getAll(): Observable<Artist[]> {

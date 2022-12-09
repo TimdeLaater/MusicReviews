@@ -19,8 +19,6 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
   constructor(
     private artistService: ArtistService,
-    private route: ActivatedRoute,
-    private router: Router,
     private authService: AuthService
 
   ) {
